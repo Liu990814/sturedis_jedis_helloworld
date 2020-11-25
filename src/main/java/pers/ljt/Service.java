@@ -1,5 +1,6 @@
 package pers.ljt;
 
+import pers.ljt.util.JedisUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.exceptions.JedisDataException;
 
@@ -19,7 +20,7 @@ public class Service {
     }
     //控制单元
     public void service(){
-        Jedis jedis = new Jedis("127.0.0.1",6379 );
+        Jedis jedis = JedisUtils.getJedis();
         String value = jedis.get("compid:" + id);
         //判断该值是否存在
         try {
